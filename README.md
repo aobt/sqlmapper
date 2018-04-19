@@ -1,4 +1,4 @@
-##### `sqlmapper` is a light mapper between `go struct` and `table rows` in db
+#### `sqlmapper` is a light mapper between `golang struct` and `table rows` in db
 
 ### example
 We need to read/write a table in db, like:
