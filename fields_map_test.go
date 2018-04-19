@@ -84,7 +84,6 @@ func QueryByKey(ctx context.Context, tx *sql.Tx, db *sql.DB, fieldKey string) (
 	}
 
 	return objptr.(*DemoRow), nil
-
 }
 
 // Query by `field_one`

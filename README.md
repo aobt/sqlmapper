@@ -29,25 +29,24 @@ without long `Hard-Code` sql string which is easy to make mistakes.
 sample (follow [fields_map_test.go](https://github.com/arthas29/sqlmapper/blob/master/fields_map_test.go) for more):
 ```go
 
-	// select single row
-	var db *sql.DB
-	db = GetDB() // get db
-	ctx := context.Background()
+// select single row
+// Query by primary key (field[0])
+func QueryByKey(ctx context.Context, tx *sql.Tx, db *sql.DB, fieldKey string) (
+	*DemoRow, error) {
 
-	var demo DemoRow
-	demo.FieldKey = "key001"
-	fieldsMap, err := NewFieldsMap("test_table", &demo)
+	var row DemoRow
+	row.FieldKey = fieldKey
+	fm, err := NewFieldsMap(table, &row)
 	if err != nil {
-		//...
+		return nil, err
 	}
 
-	// Select By PriKey(the first field in struct)
-	objptr, err := fieldsMap.SQLSelectByPriKey(ctx, nil, db)
+	objptr, err := fm.SQLSelectByPriKey(ctx, tx, db)
 	if err != nil {
-		//...
+		return nil, err
 	}
 
-	// objptr.(*DemoRow) get the pointer to the return obj
-    log.Println(objptr.(*DemoRow))
+	return objptr.(*DemoRow), nil
+}
     
 ```
