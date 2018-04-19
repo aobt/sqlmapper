@@ -1,7 +1,6 @@
-# sqlmapper
-`sqlmapper` is a light mapper between `go struct` and `table rows` in db
+##### `sqlmapper` is a light mapper between `go struct` and `table rows` in db
 
-## example
+### example
 We need to read/write a table in db, like:
 ```sql
 CREATE TABLE `test_table` (
@@ -24,9 +23,14 @@ type DemoRow struct {
 	FieldFou float64 `sql:"field_fou"`
 }
 ```
-Then, we can execute `SELECT`/`INSERT`/`UPDATE`/`DELETE` without long `Hard-Code` sql string which is easy to make mistakes.
+Then, we can execute `SELECT`/`INSERT`/`UPDATE`/`DELETE` 
+without long `Hard-Code` sql string which is easy to make mistakes.
+
+sample (follow [fields_map_test.go](https://github.com/arthas29/sqlmapper/blob/master/fields_map_test.go) for more):
 ```go
-    var db *sql.DB
+
+	// select single row
+	var db *sql.DB
 	db = GetDB() // get db
 	ctx := context.Background()
 
@@ -44,5 +48,6 @@ Then, we can execute `SELECT`/`INSERT`/`UPDATE`/`DELETE` without long `Hard-Code
 	}
 
 	// objptr.(*DemoRow) get the pointer to the return obj
-	log.Println(objptr.(*DemoRow))
+    log.Println(objptr.(*DemoRow))
+    
 ```
