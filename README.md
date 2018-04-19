@@ -24,7 +24,6 @@ type DemoRow struct {
 }
 ```
 Then, we can execute `SELECT`/`INSERT`/`UPDATE`/`DELETE` 
-
 without long `Hard-Code` sql string which is easy to make mistakes.
 
 sample (follow [fields_map_test.go](https://github.com/arthas29/sqlmapper/blob/master/fields_map_test.go) for more):
