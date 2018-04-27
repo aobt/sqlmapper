@@ -1,3 +1,8 @@
+// sqlmapper is a light mapper
+// between golang struct and table rows in db
+// @author arthas29
+// https://github.com/arthas29/sqlmapper
+
 package sqlmapper
 
 import (
