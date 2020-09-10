@@ -460,6 +460,7 @@ func (fds *_FieldsMap) SQLSelectRowsByFieldNameInDB(ctx context.Context, tx *sql
 	if err != nil {
 		return nil, err
 	}
+	defer rs.Close() // should close Rows after used
 
 	var objs []interface{}
 	for rs.Next() {
@@ -494,6 +495,7 @@ func (fds *_FieldsMap) SQLSelectAllRows(ctx context.Context, tx *sql.Tx,
 	if err != nil {
 		return nil, err
 	}
+	defer rs.Close() // should close Rows after used
 
 	var objs []interface{}
 	for rs.Next() {
